@@ -7,8 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Paths {
-    public static FileSystem fileSytem;
-    public static Path path;
+    private static FileSystem fileSytem;
+    private static Path path;
     public static void test() {
         System.out.println("utils Paths.test()");
     }
@@ -26,20 +26,29 @@ public class Paths {
             }
 
             path = fileSytem.getPath(location);
-            System.out.println("Path Set.");
+            System.out.println("Path Set");
+            printPath();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public static void makeDirectories() throws IOException{
+        Files.createDirectories(path);
+    }
+
     public static boolean pathIsSet() {
-        if (path==null) return false;
-        else return true;
+        return path != null;
     }
 
     public static boolean pathExists() {
         if (pathIsSet()) return Files.exists(path);
         else return false;
+    }
+
+    public static void printPath() {
+        System.out.println(path);
+        System.out.println(path.toAbsolutePath().normalize());
     }
 }

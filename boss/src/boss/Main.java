@@ -11,8 +11,9 @@ public class Main {
 
         try {
             connect();
-            setPath("..\\test_folder");
-            System.out.println(path.toAbsolutePath());
+            setPath("..\\test_folder\\abc\\def\\ghi");
+            makeDirectories();
+
             System.out.println(pathExists());
 
         } catch (IOException e) {
