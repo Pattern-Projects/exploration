@@ -11,11 +11,8 @@ public class Main {
 
         try {
             connect();
-            System.out.println(pathIsSet());
-            System.out.println(pathExists());
-
-            setPath("C:\\Users\\publi\\Documents\\Java-Practice\\test_folder");
-            System.out.println(pathIsSet());
+            setPath("..\\test_folder");
+            System.out.println(path.toAbsolutePath());
             System.out.println(pathExists());
 
         } catch (IOException e) {
