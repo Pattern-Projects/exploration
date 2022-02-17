@@ -1,29 +1,30 @@
-package boss;
+package ui;
 
-import utils.TextFile;
+
+import fileSystem.TextFile;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 
-import static utils.Paths.*;
+import static util.Paths.*;
 
 public class Main {
     public static void main(String... args) {
-        System.out.println("boss main");
+        System.out.println("Exploration Main");
         test();
 
-        var txt = new TextFile(Path.of("..\\test_folder\\abc"));
-        List<String> list = new ArrayList<>();
-        list.add("text file sup");
-        list.add("Well hello there");
+        var txt = new TextFile(Path.of("..\\test_folder\\output"));
+        var txte = new TextFile(Path.of("..\\test_folder\\output"), "test.txt");
 
         try {
-            txt.append(list);
+            txt.append("Hello there");
+            txte.append("Hello there");
+            txt.read();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
 
         try {
             connect();

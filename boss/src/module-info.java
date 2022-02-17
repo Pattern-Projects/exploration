@@ -1,3 +1,3 @@
 module boss {
-    requires utils;
+    requires exploration;
 }
