@@ -5,6 +5,7 @@ import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class Paths {
     private static FileSystem fileSytem;
@@ -45,6 +46,14 @@ public class Paths {
     public static boolean pathExists() {
         if (pathIsSet()) return Files.exists(path);
         else return false;
+    }
+
+    public static void walkPath() throws IOException{
+        try (var paths = Files.walk(path)) {
+            paths.parallel()
+                    .filter(Files::isDirectory)
+                    .forEach(System.out::println);
+        }
     }
 
     public static void printPath() {

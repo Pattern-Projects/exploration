@@ -15,9 +15,9 @@ import static util.Paths.*;
 public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
-        methrefs();
+//        methrefs();
 //        checkLocalClass();
-//        checkPaths();
+        checkPaths();
 //        checkTextFile();
 //        checkTestDirectories();
     }
@@ -81,6 +81,7 @@ public class Main {
             makeDirectories();
 
             System.out.println(pathExists());
+            walkPath();
 
         } catch (IOException e) {
             e.printStackTrace();
