@@ -7,17 +7,41 @@ import objects.LocalClass;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 import static util.Paths.*;
 
 public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
-        checkLocalClass();
+        methrefs();
+//        checkLocalClass();
 //        checkPaths();
 //        checkTextFile();
 //        checkTestDirectories();
     }
+
+    /*
+    * methrefs()
+    * Method references exploration
+    * Creates a list removes values if predicate is met
+    * Prints list*/
+    public static void methrefs() {
+        List<String> list = new ArrayList<>();
+        list.add("Hey");
+        list.add("Hi");
+        list.add("Hello");
+        list.add("Heya");
+        list.add("Allo");
+
+        String h = "Hello There";
+        list.removeIf(h::contains);
+        list.forEach(System.out::println);
+        //        list.forEach((x) -> System.out.println(x));
+    }
+
+
 
 
     public static void checkLocalClass() {
