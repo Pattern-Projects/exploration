@@ -1,11 +1,7 @@
 package objects;
 
-class Insect {
-    protected int numberOfLegs = 4;
-    String label = "buggy";
-}
-
 public class Beetle extends Insect {
+    public boolean hasFur = true;
     protected int numberOfLegs = 6;
     short age = 3;
     public void printData() {

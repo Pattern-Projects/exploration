@@ -4,6 +4,7 @@ package ui;
 import fileSystem.TextFile;
 import fileSystem.TestDirectory;
 import objects.Beetle;
+import objects.Insect;
 import objects.LocalClass;
 
 import java.io.IOException;
@@ -16,7 +17,8 @@ import static util.Paths.*;
 public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
-        checkSuperReference();
+        checkHiddenVariables();
+//        checkSuperReference();
 //        methrefs();
 //        checkLocalClass();
 //        checkPaths();
@@ -27,7 +29,13 @@ public class Main {
 
     public static void checkSuperReference() {
         new Beetle().printData();
+    }
 
+    public static void checkHiddenVariables() {
+        Beetle beetle = new Beetle();
+        Insect insect = beetle;
+        System.out.println(beetle.hasFur);
+        System.out.println(insect.hasFur);
     }
 
     /*
