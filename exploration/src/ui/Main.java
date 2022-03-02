@@ -17,15 +17,30 @@ import static util.Paths.*;
 public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
-        checkHiddenVariables();
+        checkMethods();
+//        checkHiddenVariables();
 //        checkSuperReference();
-//        methrefs();
+//        checkMethrefs();
 //        checkLocalClass();
 //        checkPaths();
 //        checkTextFile();
 //        checkTestDirectories();
+
     }
 
+    public static void checkMethods() {
+        Main main = new Main();
+        main.checkInstanceMethod();
+        main.checkStaticMethod();
+    }
+
+    public static void checkStaticMethod() {
+        System.out.println("Static method Ok");
+    }
+
+    public void checkInstanceMethod() {
+        System.out.println("Instance method Ok");
+    }
 
     public static void checkSuperReference() {
         new Beetle().printData();
@@ -43,7 +58,7 @@ public class Main {
     * Method references exploration
     * Creates a list removes values if predicate is met
     * Prints list*/
-    public static void methrefs() {
+    public static void checkMethrefs() {
         List<String> list = new ArrayList<>();
         list.add("Hey");
         list.add("Hi");
