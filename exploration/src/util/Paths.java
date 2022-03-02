@@ -56,6 +56,16 @@ public class Paths {
         }
     }
 
+    public static void findPath() throws IOException{
+        try (var paths = Files.find(path, 10, (p, x) -> x.isRegularFile())) {
+            paths.parallel()
+                    .filter(Files::isDirectory)
+                    .forEach(System.out::println);
+        }
+    }
+
+
+
     public static void printPath() {
         System.out.println(path);
         System.out.println(path.toAbsolutePath().normalize());

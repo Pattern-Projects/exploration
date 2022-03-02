@@ -3,6 +3,7 @@ package ui;
 
 import fileSystem.TextFile;
 import fileSystem.TestDirectory;
+import objects.Beetle;
 import objects.LocalClass;
 
 import java.io.IOException;
@@ -15,11 +16,18 @@ import static util.Paths.*;
 public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
+        checkSuperReference();
 //        methrefs();
 //        checkLocalClass();
-        checkPaths();
+//        checkPaths();
 //        checkTextFile();
 //        checkTestDirectories();
+    }
+
+
+    public static void checkSuperReference() {
+        new Beetle().printData();
+
     }
 
     /*
