@@ -11,13 +11,18 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static util.Paths.*;
 
 public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
-        checkMethods();
+
+        checkFlatMap();
+//        checkMethods();
 //        checkHiddenVariables();
 //        checkSuperReference();
 //        checkMethrefs();
@@ -25,6 +30,17 @@ public class Main {
 //        checkPaths();
 //        checkTextFile();
 //        checkTestDirectories();
+
+    }
+
+    public static void checkFlatMap() {
+
+        var arr = new int[]{0, 1, 2};
+        var arr2 = new int[]{3, 4, 5};
+
+        Stream.of(arr,arr2)
+                .flatMapToInt(IntStream::of)
+                .forEach(System.out::println);
 
     }
 
