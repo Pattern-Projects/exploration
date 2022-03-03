@@ -21,7 +21,8 @@ public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
 
-        checkFlatMap();
+//        checkFlatMap();
+//        checkUnaryBooleanOperation();
 //        checkMethods();
 //        checkHiddenVariables();
 //        checkSuperReference();
@@ -33,15 +34,21 @@ public class Main {
 
     }
 
-    public static void checkFlatMap() {
+    public static void checkUnaryBooleanOperation() {
+        var bul = true;
+        bul &= false;
+        bul ^= false;
+        bul |= false;
+        System.out.println(bul);
+    }
 
+    public static void checkFlatMap() {
         var arr = new int[]{0, 1, 2};
         var arr2 = new int[]{3, 4, 5};
 
         Stream.of(arr,arr2)
                 .flatMapToInt(IntStream::of)
                 .forEach(System.out::println);
-
     }
 
     public static void checkMethods() {
