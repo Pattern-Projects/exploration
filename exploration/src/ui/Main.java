@@ -20,7 +20,7 @@ import static util.Paths.*;
 public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
-
+        checkAnonymousClass();
 //        checkFlatMap();
 //        checkUnaryBooleanOperation();
 //        checkMethods();
@@ -32,6 +32,17 @@ public class Main {
 //        checkTextFile();
 //        checkTestDirectories();
 
+    }
+
+    public static void checkAnonymousClass() {
+        var anon = new Beetle() {
+            @Override
+            public void printData() {
+                System.out.println("Anonymous Beetle overwrite");
+                super.printData();
+            }
+        };
+        anon.printData();
     }
 
     public static void checkUnaryBooleanOperation() {
