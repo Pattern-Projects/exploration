@@ -18,9 +18,14 @@ import java.util.stream.Stream;
 import static util.Paths.*;
 
 public class Main {
+
+    int a = 10;
+    int b;
+
     public static void main(String... args) {
         System.out.println("Exploration Main");
-        checkAnonymousClass();
+        var main = new Main();
+        main.checkAnonymousClass();
 //        checkFlatMap();
 //        checkUnaryBooleanOperation();
 //        checkMethods();
@@ -34,14 +39,28 @@ public class Main {
 
     }
 
-    public static void checkAnonymousClass() {
+    public Main() {
+        b = 10;
+    }
+
+    public void checkAnonymousClass() {
+        final int x = 10;
+        int y = 20;
+
         var anon = new Beetle() {
             @Override
             public void printData() {
                 System.out.println("Anonymous Beetle overwrite");
-                super.printData();
+                System.out.println(x + y);
+                System.out.println(a + b);
+                length++;
+                System.out.println(age+length);
             }
         };
+
+        //y must be final or effectively final
+        //y++;
+
         anon.printData();
     }
 
