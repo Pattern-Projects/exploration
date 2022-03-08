@@ -9,6 +9,9 @@ import objects.LocalClass;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,7 +28,10 @@ public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
         var main = new Main();
-        main.checkAnonymousClass();
+        checkInnerClass(main);
+//        checkDateTimeFormat();
+//        checkPrimitiveStreamSummaryStatistics();
+//        main.checkAnonymousClass();
 //        checkFlatMap();
 //        checkUnaryBooleanOperation();
 //        checkMethods();
@@ -39,9 +45,37 @@ public class Main {
 
     }
 
+    public static void checkInnerClass(Main main) {
+        Inner inner = main.new Inner();
+        inner.go();
+    }
+
+    class Inner {
+        public int repeat = 3;
+        public void go() {
+            for (int i = 0 ; i < repeat ; i++) {
+                System.out.println(a);
+            }
+        }
+    }
+
     public Main() {
         b = 10;
     }
+
+    public static void checkDateTimeFormat() {
+        var dateTime = LocalDateTime.of(2020, Month.OCTOBER, 20, 6, 15, 30);
+        var formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss");
+
+        System.out.println(dateTime.format(formatter));
+        System.out.println(formatter.format(dateTime));
+    }
+
+    public static void checkPrimitiveStreamSummaryStatistics() {
+        String s = IntStream.of(1,2,3).summaryStatistics().toString();
+        System.out.println(s);
+    }
+
 
     public void checkAnonymousClass() {
         final int x = 10;
