@@ -1,11 +1,10 @@
 package ui;
 
 
+import annotations.MyAnnotation;
 import fileSystem.TextFile;
 import fileSystem.TestDirectory;
-import objects.Beetle;
-import objects.Insect;
-import objects.LocalClass;
+import objects.*;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -28,10 +27,11 @@ public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
         var main = new Main();
-        checkInnerClass(main);
+//        checkAbstractAndConcreteClasses();
+//        checkInnerClass(main);
 //        checkDateTimeFormat();
 //        checkPrimitiveStreamSummaryStatistics();
-//        main.checkAnonymousClass();
+        checkAnonymousClass();
 //        checkFlatMap();
 //        checkUnaryBooleanOperation();
 //        checkMethods();
@@ -43,6 +43,30 @@ public class Main {
 //        checkTextFile();
 //        checkTestDirectories();
 
+    }
+
+    @MyAnnotation(name = "Dan")
+    @MyAnnotation(name = "Denise", age = 99)
+
+    public static void checkRepeatableAnnotation() {}
+
+    public static void checkAnonymousClass() {
+        AbstractClass as = new AbstractClass() {
+            @Override
+            public void isAbstract() {
+                System.out.println("isAbstract in Anonymous class extends AbstractClass");
+            }
+        };
+
+        as.notAbstract();
+        as.isAbstract();
+    }
+
+    public static void checkAbstractAndConcreteClasses() {
+        ConcreteClass concreteClass = new ConcreteClass();
+        concreteClass.notAbstract();
+        concreteClass.isAbstract();
+//        AbstractClass abstractClass = new AbstractClass();
     }
 
     public static void checkInnerClass(Main main) {
@@ -77,7 +101,7 @@ public class Main {
     }
 
 
-    public void checkAnonymousClass() {
+    public void checkAnonymousOverride() {
         final int x = 10;
         int y = 20;
 
