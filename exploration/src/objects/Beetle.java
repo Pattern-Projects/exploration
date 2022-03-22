@@ -1,5 +1,8 @@
 package objects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Beetle extends Insect {
     public boolean hasFur = true;
     protected int numberOfLegs = 6;
@@ -15,4 +18,16 @@ public class Beetle extends Insect {
         System.out.println(super.numberOfLegs);
     }
 
+    //A method to check covariant return types
+    public List<String> myMethod() {
+        List<String> m = new ArrayList<>();
+        m.add("1");
+        return m;
+    }
+
+//    @Override
+    //This is an overloaded class because the parameter has changed
+    public void myParameterMethod(List<String> list) {
+        System.out.println("Child");
+    }
 }
