@@ -12,8 +12,10 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.BinaryOperator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -27,11 +29,19 @@ public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
         var main = new Main();
+        checkMethodGeneric(new String("Hi"));
+        checkMethodGeneric(new Integer(10));
+        checkMethodGeneric(List.of(10, 20, 30));
+//        checkMerge();
+//        checkInterfaceMemberInteraction();
+//        checkSelfIncrementingIdClass();
+//        checkNullPointerEx();
+//        checkOverLoadingAutoboxing();
 //        checkAbstractAndConcreteClasses();
 //        checkInnerClass(main);
 //        checkDateTimeFormat();
 //        checkPrimitiveStreamSummaryStatistics();
-        checkAnonymousClass();
+//        checkAnonymousClass();
 //        checkFlatMap();
 //        checkUnaryBooleanOperation();
 //        checkMethods();
@@ -48,7 +58,69 @@ public class Main {
     @MyAnnotation(name = "Dan")
     @MyAnnotation(name = "Denise", age = 99)
 
+    public static <T> void checkMethodGeneric(T t) {
+        List<T> list = new ArrayList<>();
+        list.add(t);
+        list.add(t);
+        list.add(t);
+        list.forEach(System.out::println);
+    }
+
+
+    public static void checkMerge() {
+        var sm = new HashMap<String, String>();
+
+        BinaryOperator<String> mapper = (x, y) -> (x.length() > y.length() ? x : y );
+        sm.put("John", "Jacob");
+        sm.put("Jenny", "Jackson");
+
+        sm.merge("John", "Joe", mapper);
+        sm.merge("Jenny", "JohnJoeb", mapper);
+        sm.merge("James", "JohnJoeb", mapper);
+
+        System.out.println(sm);
+
+        mapper = (x, y) -> (x.length() > y.length() ? x : null );
+        sm.merge("John", "Joe", mapper);
+        sm.merge("Jenny", "JohnJoeb", mapper);
+        sm.merge("James", "JohnJoeb", mapper);
+        System.out.println(sm);
+
+    }
+
+    public static void checkInterfaceMemberInteraction() {
+        MySecondConcreteClass x = new MySecondConcreteClass();
+        System.out.println(x.myAbstractMethod());
+        System.out.println(x.myDefaultMethod());
+        System.out.println(x.mySecondAbstractMethod());
+    }
+
+    public static void checkSelfIncrementingIdClass() {
+        SelfIncrementingIdClass s1 = new SelfIncrementingIdClass();
+        SelfIncrementingIdClass s2 = new SelfIncrementingIdClass();
+        SelfIncrementingIdClass s3 = new SelfIncrementingIdClass();
+        SelfIncrementingIdClass s4 = new SelfIncrementingIdClass();
+        System.out.println(s1.getId());
+        System.out.println(s2.getId());
+        System.out.println(s3.getId());
+        System.out.println(s4.getId());
+    }
+
     public static void checkRepeatableAnnotation() {}
+
+    public static void checkNullPointerEx() {
+        String x = "hi";
+        x.toString();
+        x = null;
+        x.toString();
+    }
+
+    public static void checkOverLoadingAutoboxing() {
+        var con = new ConcreteClass();
+        con.overloading(new Integer(10));
+        con.overloading(10);
+        con.overloading(10, 20);
+    }
 
     public static void checkAnonymousClass() {
         AbstractClass as = new AbstractClass() {
@@ -56,6 +128,7 @@ public class Main {
             public void isAbstract() {
                 System.out.println("isAbstract in Anonymous class extends AbstractClass");
             }
+
         };
 
         as.notAbstract();
