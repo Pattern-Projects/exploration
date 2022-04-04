@@ -29,9 +29,10 @@ public class Main {
     public static void main(String... args) {
         System.out.println("Exploration Main");
         var main = new Main();
-        checkMethodGeneric(new String("Hi"));
-        checkMethodGeneric(new Integer(10));
-        checkMethodGeneric(List.of(10, 20, 30));
+        checkOperatorPrecedents();
+//        checkMethodGeneric(new String("Hi"));
+//        checkMethodGeneric(new Integer(10));
+//        checkMethodGeneric(List.of(10, 20, 30));
 //        checkMerge();
 //        checkInterfaceMemberInteraction();
 //        checkSelfIncrementingIdClass();
@@ -57,6 +58,19 @@ public class Main {
 
     @MyAnnotation(name = "Dan")
     @MyAnnotation(name = "Denise", age = 99)
+
+    public static void checkOperatorPrecedents() {
+        boolean flies = true, runs = true, crawls = false;
+        // ^ higher precedent than |
+        int penguin = flies | runs ^ crawls ? 1 : 2;
+        long falcon = !flies || runs ? 3 : 4;
+        double hawk = flies ^ !!runs ? 5 : 6;
+        System.out.println(penguin);
+        System.out.println(falcon);
+        System.out.println(hawk);
+        System.out.println(1/2);
+
+    }
 
     public static <T> void checkMethodGeneric(T t) {
         List<T> list = new ArrayList<>();
